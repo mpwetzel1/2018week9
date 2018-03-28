@@ -104,6 +104,8 @@ library(car)
 #get the residual plots
 residualPlots(reg1)
 
+# Remember that this should be a straight line - you don't want to see a patern in the residuals
+
 ```
 
 Let's look at how well we do in the testing dataset. First let's plot the data.
@@ -217,6 +219,9 @@ Now let's see some plots:
 scatterplotMatrix(~ prestige + income +education + women, span =0.7, data = Prestige)
 ```
 
+
+In top row, Prestige is the Y variable. 
+
 Hmmm...the variable income looks kind of wonky, for lack of a better term. So let's see if a transformation will help:
 
 
@@ -268,8 +273,9 @@ We can compare the results of these two analyses a little more cleanly using the
 
 ```{r results="asis"}
 # compare the results of the two regression models
+# If you set type = "html", you will only be able to see it when you knit
 stargazer(prestige.mod1, prestige.mod2, title="Comparison of 2 Regression outputs",
-          type = "html", align=TRUE)
+          type = "text", align=TRUE)
 ```
 
 We conclude that we lose little by eliminating a predictor variable. This is also consistent with a principle of parsimony, also known as the KISS principle, or "Keep It Simple, Silly".
